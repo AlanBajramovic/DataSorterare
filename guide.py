@@ -12,7 +12,7 @@ def create_window(theme):
  
     layout = [
         [sg.Text(
-            '!-DATA SORT-!',
+            '!-GUIDE-!',
             font = 'Arial 25', 
             justification= 'center', 
             expand_x = True, 
@@ -30,7 +30,7 @@ def create_window(theme):
     return sg.Window('Guide', layout)
 
 
-window = create_window('dark')
+window = create_window('SandyBeach')
 
 while True: 
     event, values = window.read()
