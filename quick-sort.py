@@ -1,34 +1,43 @@
-import PySimpleGUI as sg
+import PySimpleGUI as sg  
 import subprocess
 import os
 
-def main():
-    subprocess.run([os.sys.excutable, 'data-sort.py'])
+def run_script(script_name):
+    subprocess.run([os.sys.executable, script_name])
 
 def create_window(theme):
-    sg.theme(theme) #Ange tema 
-    sg.set_options(font = 'Arial 25', button_element_size = (2,2))
-    button_size = (2,2) # Storlek på knappar 
+    sg.theme(theme) 
+    sg.set_options(font = 'Arial 25', button_element_size = (2,2)) 
+
  
     layout = [
         [sg.Text(
-            '!-QUICK SORT-!', #Text som visas i fönstret 
+            '!-QUICK SORT-!',
             font = 'Arial 25', 
             justification= 'center', 
             expand_x = True, 
             pad = (2,2),
-            key = '-TEXT-') 
+            right_click_menu = 
+            ['Menu', ['Lightgrey1', 'SandyBeach', 'Tan', 'Random']])
         ],
-        [ 
-        sg.Button('QUICK SORT', expand_x = True)
-        ],
-    ]
-    return sg.Window('quick-sort.py', layout)
- 
-theme_menu = ['Menu', ['Blue']]
-window = create_window('DarkBlue')
+        [sg.Button('Meny', expand_x = True), 
+         sg.Button('Merge Sort ', expand_x = True), 
+         sg.Button('Bubble Sort', expand_x = True), 
+         sg.Button('Insertion Sort', expand_x = True), 
+         sg.Button('Data Sort', expand_x = True)],
+        ]
+    
+    return sg.Window('Guide', layout)
 
 
+window = create_window('dark')
 
+while True: 
+    event, values = window.read()
+    if event == sg.WIN_CLOSED:
+        break
 
-window.close()
+    if event == ('Data Sort'):
+        run_script('data-sort.py')
+        
+window.close() 
