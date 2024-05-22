@@ -1,4 +1,4 @@
-Data Sorterare
+#Data Sorterare
 Funktioner:
 
 Sortera numeriska värden med Bubble Sort, Insertion Sort eller Quick Sort.
