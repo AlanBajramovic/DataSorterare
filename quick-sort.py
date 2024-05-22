@@ -1,10 +1,10 @@
 import PySimpleGUI as sg  
 import subprocess
 import os
-
+# Funktion för att köra ett annat Python-skript
 def run_script(script_name):
     subprocess.run([os.sys.executable, script_name])
-
+# Quick Sort-algoritmen
 def quick_sort(numbers):
     if len(numbers) <= 1:
         return numbers
@@ -14,11 +14,11 @@ def quick_sort(numbers):
         middle = [x for x in numbers if x == pivot]
         right = [x for x in numbers if x > pivot]
         return quick_sort(left) + middle + quick_sort(right)
-
+# Skapar ett fönster med PySimpleGUI
 def create_window(theme):
     sg.theme(theme) 
     sg.set_options(font='Arial 25', button_element_size=(2, 2)) 
-
+# Layouten för Quick Sort-fönstret
     layout = [
         [sg.Text(
             '!-QUICK SORT-!',
@@ -40,7 +40,7 @@ def create_window(theme):
     return sg.Window('Quick Sort', layout)
 
 window = create_window('SandyBeach1')
-
+# Huvudloopen för att hantera händelser
 while True: 
     event, values = window.read()
     if event == sg.WIN_CLOSED:
@@ -57,10 +57,14 @@ while True:
     if event == 'Sortera':
         input_numbers = values['input_numbers']
         try:
+            # Konvertera inmatade nummer till en lista av heltal
             numbers = list(map(int, input_numbers.split(',')))
+            # Sortera numren med Quick Sort
             sorted_numbers = quick_sort(numbers)
+            # Visa resultatet i output-fältet
             window['output'].update(', '.join(map(str, sorted_numbers)))
         except ValueError:
+            # Hantera fel inmatning
             window['output'].update('Felaktig inmatning, ange endast nummer separerade med kommatecken.')
 
 window.close()
