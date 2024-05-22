@@ -1,10 +1,10 @@
 import PySimpleGUI as sg  
 import subprocess
 import os
-
+# Funktion för att köra andra Python-skript
 def run_script(script_name):
     subprocess.run([os.sys.executable, script_name])
-
+# Skapa huvudmenyfönstret
 def create_window(theme):
     sg.theme(theme) 
     sg.set_options(font='Arial 25', button_element_size=(2, 2))
@@ -27,12 +27,12 @@ def create_window(theme):
     return sg.Window('Meny', layout)
 
 window = create_window('SandyBeach1')
-
+# Huvudloop för att läsa händelser i fönstret
 while True: 
     event, values = window.read()
-    if event == sg.WIN_CLOSED:
+    if event == sg.WIN_CLOSED: # Stäng fönstret
         break
-
+# Öppna respektive sorteringsfönster eller guide
     if event == 'Guide':
         window.close()
         run_script('guide.py')
