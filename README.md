@@ -1,5 +1,5 @@
-##Data Sorterare
-#Funktioner:
+Data Sorterare
+Funktioner:
 
 Sortera numeriska värden med Bubble Sort, Insertion Sort eller Quick Sort.
 Användning:
@@ -20,4 +20,4 @@ Python 3.x
 PySimpleGUI
 Författare:
 
-[Alan Bajramovic]
+[Ditt namn här]
