@@ -1,20 +1,22 @@
 import PySimpleGUI as sg  
 import subprocess
 import os
-
+# Funktion för att köra andra Python-skript
 def run_script(script_name):
     subprocess.run([os.sys.executable, script_name])
 
+# Skapa Guide-fönstret
 def create_window(theme):
     sg.theme(theme) 
     sg.set_options(font='Arial 16', button_element_size=(2, 2))
 
+    # Text för guide
     guide_text = '''
     !-GUIDE-!
     
     Välkommen till DataSorteraren! Så här använder du den och en kort förklaring av de olika sorteringsmetoderna.
     '''
-
+    # Instruktioner för användning
     instructions_text = '''
     1. Välj en sorteringsmetod från menyn:
         - Bubble Sort
@@ -23,7 +25,7 @@ def create_window(theme):
 
     2. Följ instruktionerna på skärmen för att sortera din data.
     '''
-
+    # Beskrivning av sorteringsmetoder
     sorting_methods_text = '''
     Sorteringsmetoder:
     
@@ -36,7 +38,7 @@ def create_window(theme):
     - Quick Sort:
       Välj ett pivot-element och dela upp listan i två delar: en med element mindre än pivot och en med element större. Sortera sedan delarna.
     '''
-
+    # Layouten för Guide-fönstret
     layout = [
         [sg.Text(guide_text, font='Arial 20', justification='center', expand_x=True, pad=(4, 2))],
         [sg.Text(instructions_text, font='Arial 16', justification='left', expand_x=True, pad=(4, 2))],
@@ -48,11 +50,12 @@ def create_window(theme):
 
 window = create_window('SandyBeach1')
 
+# Huvudloop för att läsa händelser i fönstret
 while True: 
     event, values = window.read()
-    if event == sg.WIN_CLOSED:
+    if event == sg.WIN_CLOSED: # Stäng fönstret
         break
-
+    # Hantera Meny-knappen
     if event == 'Meny':
         window.close()
         run_script('meny.py')
